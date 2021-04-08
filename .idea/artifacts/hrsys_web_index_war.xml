@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="hrsys_web_index:war">
+    <output-path>$PROJECT_DIR$/hrsys_web_index/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>hrsys_web_index</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="hrsys_web_index.war">
+      <element id="artifact" artifact-name="hrsys_web_index:war exploded" />
+    </root>
+  </artifact>
+</component>

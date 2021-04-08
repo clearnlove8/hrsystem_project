@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="hrsys_web_index" />
+        <module name="hrsys_entity" />
+        <module name="hrsys_service" />
+        <module name="hrsys_web_user" />
+        <module name="hrsys_dao" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="hrsys" target="1.5" />
+      <module name="hrsys_dao" target="1.7" />
+      <module name="hrsys_entity" target="1.7" />
+      <module name="hrsys_service" target="1.7" />
+      <module name="hrsys_web_index" target="1.7" />
+      <module name="hrsys_web_user" target="1.7" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
