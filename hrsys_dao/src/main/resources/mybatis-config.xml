@@ -19,4 +19,12 @@
     </settings>
 
     <!--引入SQL映射文件文件,Mapper映射文件-->
+    <mappers>
+        <mapper resource="mappers/First_Kind.xml"></mapper>
+        <mapper resource="mappers/Second_Kind.xml"></mapper>
+        <mapper resource="mappers/Third_Kind.xml"></mapper>
+        <mapper resource="mappers/Public_Char.xml"></mapper>
+        <mapper resource="mappers/Major_Kind.xml"></mapper>
+        <mapper resource="mappers/Major.xml"></mapper>
+    </mappers>
 </configuration>

@@ -1,10 +1,13 @@
 package com.ck.handler;
 
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+
 @Controller
 public class UserHandler {
+
 
     //直接跳转到登录页面
     @RequestMapping("/")

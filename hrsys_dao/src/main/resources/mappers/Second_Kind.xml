@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ck.dao.ISecond_Kind_Dao">
+    <!--根据一级机构的编号查询所有对应的二级机构-->
+    <select id="getSecond_KindById" resultMap="second_kind">
+        select fsk_id,second_kind_id,second_kind_name from Config_file_second_kind where first_kind_id=#{id}
+    </select>
+
+    <!--resultMap属性字段映射-->
+    <resultMap id="second_kind" type="com.ck.entity.Second_Kind">
+        <result column="fsk_id" property="fsk_id"/>
+        <result column="second_kind_id" property="second_kind_id    "/>
+        <result column="second_kind_name" property="second_kind_name"/>
+    </resultMap>
+</mapper>

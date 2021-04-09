@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ck.dao.IFirst_Kind_Dao">
+    <!--查询所有一级机构-->
+    <select id="getFirstKind" resultMap="FirstKind">
+        select ffk_id,first_kind_id,first_kind_name from Config_file_first_kind
+    </select>
+
+    <!--resultMap属性字段映射-->
+    <resultMap id="FirstKind" type="com.ck.entity.First_Kind">
+        <result property="ffk_id" column="ffk_id"/>
+        <result property="first_kind_id" column="first_kind_id"/>
+        <result property="first_kind_name" column="first_kind_name"/>
+    </resultMap>
+
+</mapper>

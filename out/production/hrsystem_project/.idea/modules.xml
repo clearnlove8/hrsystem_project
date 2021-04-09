@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/hrsys/hrsys.iml" filepath="$PROJECT_DIR$/hrsys/hrsys.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hrsys_dao/hrsys_dao.iml" filepath="$PROJECT_DIR$/hrsys_dao/hrsys_dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hrsys_entity/hrsys_entity.iml" filepath="$PROJECT_DIR$/hrsys_entity/hrsys_entity.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hrsys_service/hrsys_service.iml" filepath="$PROJECT_DIR$/hrsys_service/hrsys_service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hrsys_web_index/hrsys_web_index.iml" filepath="$PROJECT_DIR$/hrsys_web_index/hrsys_web_index.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hrsys_web_user/hrsys_web_user.iml" filepath="$PROJECT_DIR$/hrsys_web_user/hrsys_web_user.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/hrsystem_project.iml" filepath="$PROJECT_DIR$/.idea/hrsystem_project.iml" />
+    </modules>
+  </component>
+</project>

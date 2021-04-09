@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ck.dao.IMajor_Dao">
+
+    <!--根据职称分类编号查询所对应的所有职称-->
+    <select id="get_MajorById" resultMap="major">
+        select mak_id,major_id,major_name from Config_major
+    </select>
+
+    <!--resultMap属性字段-->
+    <resultMap id="major" type="com.ck.entity.Major">
+        <result column="mak_id" property="mak_id"/>
+        <result column="major_id" property="major_id"/>
+        <result column="major_name" property="major_name"/>
+    </resultMap>
+</mapper>
