@@ -13,6 +13,7 @@
     <module>../hrsys_service</module>
     <module>../hrsys_web_user</module>
     <module>../hrsys_web_index</module>
+      <module>../hrsys_web_humanRsources</module>
   </modules>
   <packaging>pom</packaging>
 

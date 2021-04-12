@@ -6,11 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="hrsys_web_index" />
-        <module name="hrsys_entity" />
-        <module name="hrsys_service" />
         <module name="hrsys_web_user" />
+        <module name="hrsys_web_humanRsources" />
+        <module name="hrsys_service" />
+        <module name="hrsys_entity" />
         <module name="hrsys_dao" />
+        <module name="hrsys_web_index" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -18,6 +19,7 @@
       <module name="hrsys_dao" target="1.7" />
       <module name="hrsys_entity" target="1.7" />
       <module name="hrsys_service" target="1.7" />
+      <module name="hrsys_web_humanRsources" target="1.7" />
       <module name="hrsys_web_index" target="1.7" />
       <module name="hrsys_web_user" target="1.7" />
     </bytecodeTargetLevel>

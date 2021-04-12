@@ -1,0 +1,616 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-trasitional.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<link rel="stylesheet"
+			href="css/table.css" type="text/css">
+		<link rel="stylesheet"
+			href="css/cwcalendar.css" type="text/css">
+		<script type="text/javascript"
+			src="javascript/jquery-1.7.2.js">
+		</script>
+		<script type="text/javascript"
+			src="javascript/jquery.messager.js">
+		</script>
+		<script type="text/javascript"
+			src="javascript/comm/comm.js">
+		</script>
+		<script type="text/javascript"
+			src="javascript/comm/select.js">
+		</script>
+		<script type="text/javascript"
+			src="javascript/calendar-ch.js">
+		</script>
+		<script type="text/javascript"
+			src="javascript/time.js">
+		</script>
+		<script type="text/javascript"
+			src="javascript/human_register.js">
+		</script>
+		<script type="text/javascript"
+			src="javascript/human_input_check.js">
+		</script>
+
+	</head>
+
+	<body>
+		<form method="post" action="addHumanFile">
+			<table width="100%">
+				<tr>
+					<td>
+						<font color="black">您正在做的业务是：人力资源--人力资源档案管理--人力资源档案登记 </font>
+					</td>
+				</tr>
+				<tr>
+					<td align="right">
+						<input type="submit" value="提交" class="BUTTON_STYLE1"/>
+						<input type="reset" value="清除" class="BUTTON_STYLE1"/>
+					</td>
+				</tr>
+			</table>
+			<table width="100%" border="1" cellpadding=3 cellspacing=1
+				bordercolorlight=#848284 bordercolordark=#eeeeee
+				class="TABLE_STYLE1">
+				<tr>
+					<td class="TD_STYLE1" width="11%">
+						I级机构
+					</td>
+					<td width="14%" class="TD_STYLE2">
+						<select name="first_kind_id" class="SELECT_STYLE1" id="firstKind">
+							<option value="0">请选择</option>
+							<!--
+							<option>集团</option>
+							-->
+						</select>
+						<input type="hidden" name="first_kind_name"/>
+					</td>
+					<td width="11%" class="TD_STYLE1">
+						II级机构
+					</td>
+					<td width="14%" class="TD_STYLE2">
+						<select name="second_kind_id" class="SELECT_STYLE1" id="secondKind">
+							<option value="0">请选择</option>
+							<!--
+							<option>湖南分校</option>
+							-->
+						</select>
+						<input type="hidden" name="second_kind_name"/>
+					</td>
+					<td width="11%" class="TD_STYLE1">
+						III级机构
+					</td>
+					<td class="TD_STYLE2" colspan="2">
+						<select name="third_kind_id" class="SELECT_STYLE1" id="thirdKind">
+							<option value="0">请选择</option>
+							<!--
+							<option>长沙华瑞</option>
+							-->
+						</select>
+						<input type="hidden" name="third_kind_name"/>
+					</td>
+					<td rowspan="5" style="text-align: center;">
+					</td>
+				</tr>
+				<tr>
+					<td class="TD_STYLE1">
+						职位分类
+					</td>
+					<td class="TD_STYLE2">
+						<select name="human_major_kind_id" class="SELECT_STYLE1" id="majorKind">
+							<option value="0">请选择</option>
+							<!--
+							<option>销售</option>
+							<option>软件开发</option>
+							-->
+						</select>
+						<input type="hidden" name="human_major_kind_name"/>
+					</td>
+					<td class="TD_STYLE1">
+						职位名称
+					</td>
+					<td class="TD_STYLE2">
+						<select name="human_major_id" class="SELECT_STYLE1" id="majorName">
+							<option value="0">请选择</option>
+							<!--
+							<option>区域经理</option>
+							<option>总经理</option>
+							-->
+						</select>
+						<input type="hidden" name="hunma_major_name"/>
+					</td>
+					<td class="TD_STYLE1">
+						职称
+					</td>
+					<td colspan="2" class="TD_STYLE2">
+						<select  class="SELECT_STYLE1" id="major">
+							<option value="0">请选择</option>
+							<!--
+							<option>工程师</option>
+							<option>助理</option>
+							<option>经理</option>
+							-->
+						</select>
+						<input type="hidden" name="human_pro_designation"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="TD_STYLE1">
+						姓名
+					</td>
+					<td class="TD_STYLE2">
+						<input type="text" id="humanName" name="human_name"
+							class="INPUT_STYLE2"/>
+					</td>
+					<td class="TD_STYLE1">
+						性别
+					</td>
+					<td class="TD_STYLE2">
+						<select name="human_sex" class="SELECT_STYLE1">
+							<option value="男" selected="selected">
+								男
+							</option>
+							<option value="女">
+								女
+							</option>
+						</select>
+					</td>
+					<td class="TD_STYLE1">
+						EMAIL
+					</td>
+					<td colspan="2" class="TD_STYLE2">
+						<input type="text" name="human_email" id="humanEmail"
+							class="INPUT_STYLE2">
+					</td>
+				</tr>
+				<tr>
+					<td class="TD_STYLE1">
+						电话
+					</td>
+					<td class="TD_STYLE2">
+						<input type="text" name="human_telephone" id="humanTelephone"
+							class="INPUT_STYLE2">
+					</td>
+					<td class="TD_STYLE1">
+						QQ
+					</td>
+					<td class="TD_STYLE2">
+						<input type="text" name="human_qq" id="humanQq"
+							class="INPUT_STYLE2">
+					</td>
+					<td class="TD_STYLE1">
+						手机
+					</td>
+					<td colspan="2" class="TD_STYLE2">
+						<input type="text" name="human_mobilephone" id="humanMobilephone"
+							class="INPUT_STYLE2">
+					</td>
+				</tr>
+				<tr>
+					<td class="TD_STYLE1">
+						住址
+					</td>
+					<td colspan="3" class="TD_STYLE2">
+						<input type="text" name="human_address"
+							class="INPUT_STYLE2">
+					</td>
+					<td class="TD_STYLE1">
+						邮编
+					</td>
+					<td colspan="2" class="TD_STYLE2">
+						<input type="text" name="human_postcode"
+							class="INPUT_STYLE2">
+					</td>
+				</tr>
+				<tr>
+					<td class="TD_STYLE1">
+						国籍
+					</td>
+					<td class="TD_STYLE2">
+						<select name="human_nationality" class="SELECT_STYLE1" id="country">
+							<!--
+							<option>中国</option>
+							<option>美国</option>
+							-->
+						</select>
+					</td>
+					<td class="TD_STYLE1">
+						出生地
+					</td>
+					<td class="TD_STYLE2">
+						<input type="text" name="human_birthplace"
+							class="INPUT_STYLE2">
+					</td>
+					<td class="TD_STYLE1">
+						生日
+					</td>
+					<td width="13%" class="TD_STYLE2">
+						<input type="text" name="human_birthday"
+							class="INPUT_STYLE2" id="birthday">
+					</td>
+					<td width="11%" class="TD_STYLE1">
+						民族
+					</td>
+					<td class="TD_STYLE2" width="14%">
+						<select name="human_race" class="SELECT_STYLE1" id="nation">
+							<!--
+							<option>汉族</option>
+							<option>回族</option>
+							-->
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td class="TD_STYLE1">
+						宗教信仰
+					</td>
+					<td class="TD_STYLE2">
+						<select name="human_religion" class="SELECT_STYLE1" id="religion">
+							<option value="无">无</option>
+							<!--
+							<option>佛教</option>
+							-->
+						</select>
+					</td>
+					<td class="TD_STYLE1">
+						政治面貌
+					</td>
+					<td class="TD_STYLE2">
+						<select name="human_party" class="SELECT_STYLE1" id="politics">
+							<!--
+							<option>群众</option>
+							<option>党员</option>
+							-->
+						</select>
+					</td>
+					<td class="TD_STYLE1">
+						身份证号码
+					</td>
+					<td class="TD_STYLE2">
+						<input type="text" name="human_id_card" id="humanIdCard"
+							class="INPUT_STYLE2">
+					</td>
+					<td class="TD_STYLE1">
+						社会保障号码
+					</td>
+					<td class="TD_STYLE2">
+						<input type="text" name="human_society_security_id"
+							class="INPUT_STYLE2">
+					</td>
+				</tr>
+				<tr>
+					<td class="TD_STYLE1">
+						年龄
+					</td>
+					<td class="TD_STYLE2">
+						<input type="text" name="human_age" id="humanAge"
+							class="INPUT_STYLE2">
+					</td>
+					<td class="TD_STYLE1">
+						学历
+					</td>
+					<td class="TD_STYLE2">
+						<select name="human_educated_degree" class="SELECT_STYLE1" id="education">
+							<!--
+							<option>高中</option>
+							<option>本科</option>
+							<option>大专</option>
+							-->
+						</select>
+					</td>
+					<td class="TD_STYLE1">
+						教育年限
+					</td>
+					<td class="TD_STYLE2">
+						<select name="human_educated_years" class="SELECT_STYLE1" id="average">
+							<!--
+							<option>12</option>
+							<option>16</option>
+							-->
+						</select>
+					</td>
+					<td class="TD_STYLE1">
+						学历专业
+					</td>
+					<td class="TD_STYLE2">
+						<select name="human_educated_major" class="SELECT_STYLE1" id="profession">
+							<!--
+							<option>生物工程</option>
+							<option>计算机</option>
+							-->
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td class="TD_STYLE1">
+						薪酬标准
+					</td>
+					<td class="TD_STYLE2">
+						<select name="salary_standard_id" class="SELECT_STYLE1" id="salary">
+							<option value="0">请选择</option>
+							<option value="100">薪酬标准1</option>
+							<option value="101">薪酬标准2</option>
+						</select>
+						<input type="hidden" name="salary_standard_name"/>
+					</td>
+					<td class="TD_STYLE1">
+						开户行
+					</td>
+					<td class="TD_STYLE2">
+						<input type="text" name="human_bank"
+							class="INPUT_STYLE2">
+					</td>
+					<td class="TD_STYLE1">
+						帐号
+					</td>
+					<td class="TD_STYLE2">
+						<input type="text" name="human_account"
+							class="INPUT_STYLE2">
+					</td>
+					<td class="TD_STYLE1">
+						登记人
+					</td>
+					<td class="TD_STYLE2">
+						<input type="text" name="register" value="谢鹏"
+							readonly="readonly" class="INPUT_STYLE2">
+					</td>
+				</tr>
+				<tr>
+					<td class="TD_STYLE1">
+						建档时间
+					</td>
+					<td class="TD_STYLE2">
+						<input type="text" name="regist_time" id="create_time" readonly="readonly"
+							class="INPUT_STYLE2">
+					</td>
+					<td class="TD_STYLE1">
+						特长
+					</td>
+					<td class="TD_STYLE2">
+						<select name="human_speciality" class="SELECT_STYLE1" id="speciality">
+							<!--
+							<option>java</option>
+							<option>数据库</option>
+							-->
+						</select>
+					</td>
+					<td class="TD_STYLE1">
+						爱好
+					</td>
+					<td class="TD_STYLE2">
+						<select name="human_hobby" class="SELECT_STYLE1" id="hobby">
+							<option value="篮球">篮球</option>
+							<option value="跳舞">跳舞</option>
+							<option value="跑步">跑步</option>
+							<option value="乒乓球">乒乓球</option>
+							<option value="羽毛球">羽毛球</option>
+						</select>
+					</td>
+					<td class="TD_STYLE1">
+						&nbsp;
+					</td>
+					<td class="TD_STYLE2">
+						&nbsp;
+					</td>
+				</tr>
+				<tr>
+					<td class="TD_STYLE1">
+						个人履历
+					</td>
+					<td colspan="7" class="TD_STYLE2">
+						<textarea rows="4"
+							class="TEXTAREA_STYLE1"></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td class="TD_STYLE1">
+						家庭关系信息
+					</td>
+					<td colspan="7" class="TD_STYLE2">
+						<textarea name="human_family_membership" rows="4"
+							class="TEXTAREA_STYLE1"></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td class="TD_STYLE1">
+						备注
+					</td>
+					<td colspan="7" class="TD_STYLE2">
+						<textarea name="remark" rows="4" class="TEXTAREA_STYLE1"></textarea>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</body>
+<script>
+	//页面打开即加载
+	$(function () {
+		//1.加载一级机构
+		$.post(
+				"getFirstKind",
+				{},
+				function (data) {
+					for (let i=0;i < data.length;i++){
+						let context = "<option value="+data[i].first_kind_id+">"+data[i].first_kind_name+"</option>";
+						$("#firstKind").append(context);
+					}
+				},
+				"json"
+		);
+
+		//加载职称分类
+		$.post(
+				"getMajorKind",
+				function (data) {
+					for (let i=0;i < data.length;i++){
+						let context = "<option value="+data[i].major_kind_id+">"+data[i].major_kind_name+"</option>";
+						$("#majorKind").append(context);
+					}
+				},
+				"json"
+		);
+
+		//加载公共字段
+		$.post(
+				"getPublicChar",
+				function (data) {
+					for (let i=0;i < data.length;i++){
+						let context = "<option value="+data[i].attribute_name+">"+data[i].attribute_name+"</option>";
+						if('国籍'==data[i].attribute_kind){
+							$("#country").append(context);
+						}
+						if('民族'==data[i].attribute_kind){
+							$("#nation").append(context);
+						}
+						if('宗教'==data[i].attribute_kind){
+							$("#religion").append(context);
+						}
+						if('专业'==data[i].attribute_kind){
+							$("#profession").append(context);
+						}
+						if('学历'==data[i].attribute_kind){
+							$("#education").append(context);
+						}
+						if('教育年限'==data[i].attribute_kind){
+							$("#average").append(context);
+						}
+						if('特长'==data[i].attribute_kind){
+							$("#speciality").append(context);
+						}
+						if('政治面貌'==data[i].attribute_kind){
+							$("#politics").append(context);
+						}
+					}
+				},
+				"json"
+		);
+
+		//2.一级下拉框设置改变事件
+		$("#firstKind").change(function () {
+			//获取当前选中的一级机构的编号
+			let firstKindId = $(this).val();
+			//获取选中的option的文本值
+			let text = $(this).find("option:selected").text()
+			//将选中的文本值赋值给指定的input框
+			$("input[name='first_kind_name']").val(text);
+			//发送请求加载对应的二级机构
+			$.post(
+					"getSecondKindById",
+					{
+						"first_kind_id"	:firstKindId
+					},
+					function (data) {
+						//先清空
+						$("#secondKind").empty();
+						let context = "<option value='0'>请选择</option>";
+						$("#secondKind").append(context);
+						for (let i=0;i < data.length;i++){
+							context = "<option value="+data[i].second_kind_id+">"+data[i].second_kind_name+"</option>";
+							$("#secondKind").append(context);
+						}
+					},
+					"json"
+			);
+		});
+
+
+		//3.二级下拉框设置点击事件
+		$("#secondKind").change(function () {
+			//获取当前二级机构的编号
+			let secondKindId = $(this).val();
+			//获取当前选中的option的文本值
+			let text = $(this).find("option:selected").text();
+			//将选中的文本值赋值给指定的input框
+			$("input[name='second_kind_name']").val(text);
+			//先判断是否选中一级机构
+			// if(secondKindId==0){
+			// 	layer.msg('请先选择一级机构');
+			// 	return false;
+			// }
+			//发送请求获取三级机构
+			$.post(
+					"getThirdKindById",
+					{
+						"second_kind_id":secondKindId
+					},
+					function (data) {
+						//先清空
+						$("#thirdKind").empty();
+						let context = "<option value='0'>请选择</option>";
+						$("#thirdKind").append(context);
+						for (let i=0;i < data.length;i++){
+							context = "<option value="+data[i].third_kind_id+">"+data[i].third_kind_name+"</option>";
+							$("#thirdKind").append(context);
+						}
+					},
+					"json"
+			);
+		});
+
+		//为三级机构下拉框设置点击事件
+		$("#thirdKind").change(function () {
+			//获取当前选中下拉框中option的文本值
+			let text = $(this).find("option:selected").text();
+			//将获取到的文本赋值给指定的input框
+			$("input[name='third_kind_name']").val(text);
+		});
+
+		//4.职称分类设置改变事件
+		$("#majorKind").change(function () {
+			//获取当前职称分类ID
+			let majorKindId = $(this).val();
+			//获取当前选中的option的文本值
+			let text = $(this).find("option:selected").text();
+			//将获取的文本值添加指定的input框中
+			$("input[name='human_major_kind_name']").val(text);
+			//发送请求获取对应的职称名称
+			$.post(
+					"getMajorById",
+					{
+						"major_kind_id":majorKindId
+					},
+					function (data) {
+						//清空下拉框
+						$("#majorName").empty();
+						$("#major").empty();
+						let context = "<option value='0'>请选择</option>";
+						$("#majorName").append(context);
+						$("#major").append(context);
+						for (let i=0;i < data.length;i++){
+							context = "<option value="+data[i].major_id+">"+data[i].major_name+"</option>";
+							$("#majorName").append(context);
+							$("#major").append(context);
+						}
+					},
+					"json"
+			);
+		});
+
+		//5.选择职称名称时,职称也跟着一起改变
+		$("#majorName").change(function () {
+			//获取当前职称名称的编号
+			let majorId = $(this).val();
+			//获取当前选中的option的文本值
+			let text = $(this).find("option:selected").text();
+			//将获取到文本值赋值到指定的input框中
+			$("input[name='hunma_major_name']").val(text);
+			$("input[name='human_pro_designation']").val(text);
+			//获取职称下拉框的所有子元素(循环遍历)
+			$("#major option").each(function () {
+				let val = $(this).val();
+				if(val == majorId){
+					$(this).prop("selected",true);
+				}
+			});
+		});
+
+		//6.给薪酬标准下拉框设置点击事件
+		$("#salary").change(function () {
+			//获取当前选中的option文本值
+			let text = $(this).find("option:selected").text();
+			//将获取到文本值赋值给指定的input框
+			$("input[name='salary_standard_name']").val(text);
+		});
+	});
+</script>
+</html>
+

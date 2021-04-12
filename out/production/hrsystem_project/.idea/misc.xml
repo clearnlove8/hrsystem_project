@@ -3,6 +3,7 @@
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/hrsys/hrsys_web_index" />
     <file type="web" url="file://$PROJECT_DIR$/hrsys/hrsys_web_user" />
+    <file type="web" url="file://$PROJECT_DIR$/hrsys_web_humanRsources" />
     <file type="web" url="file://$PROJECT_DIR$/hrsys_web_index" />
     <file type="web" url="file://$PROJECT_DIR$/hrsys_web_user" />
   </component>
@@ -14,12 +15,6 @@
       <list>
         <option value="$PROJECT_DIR$/hrsys/pom.xml" />
       </list>
-    </option>
-    <option name="ignoredFiles">
-      <set>
-        <option value="$PROJECT_DIR$/hrsys/hrsys_web_index/pom.xml" />
-        <option value="$PROJECT_DIR$/hrsys/hrsys_web_user/pom.xml" />
-      </set>
     </option>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">

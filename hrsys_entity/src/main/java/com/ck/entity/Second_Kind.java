@@ -76,18 +76,5 @@ public class Second_Kind {
     public void setSecond_sale_id(int second_sale_id) {
         this.second_sale_id = second_sale_id;
     }
-
-    @Override
-    public String toString() {
-        return "Second_Kind{" +
-                "fsk_id=" + fsk_id +
-                ", first_kind_id=" + first_kind_id +
-                ", first_kind_name='" + first_kind_name + '\'' +
-                ", second_kind_id=" + second_kind_id +
-                ", second_kind_name='" + second_kind_name + '\'' +
-                ", second_salary_id=" + second_salary_id +
-                ", second_sale_id=" + second_sale_id +
-                '}';
-    }
 }
 
