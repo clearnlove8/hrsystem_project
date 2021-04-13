@@ -34,7 +34,7 @@
 	</head>
 
 	<body>
-		<form method="post" action="addHumanFile">
+		<form method="post" action="addHumanFile" enctype="multipart/form-data">
 			<table width="100%">
 				<tr>
 					<td>
@@ -89,6 +89,9 @@
 						<input type="hidden" name="third_kind_name"/>
 					</td>
 					<td rowspan="5" style="text-align: center;">
+						<!--照片区域-->
+						<img class="user-header" style="width: 120px;height: 140px;object-fit: cover;" src="images/people.jpg">
+						<input type="file" name="file" onchange="imgChange(event)" id="file" style="display:none"/>
 					</td>
 				</tr>
 				<tr>
@@ -610,6 +613,26 @@
 			//将获取到文本值赋值给指定的input框
 			$("input[name='salary_standard_name']").val(text);
 		});
+
+	});
+</script>
+<!--头像加载-->
+<script>
+	<!--头像加载-->
+	function imgChange(e) {
+		console.info(e.target.files[0]);//图片文件
+		console.log(e.target.value);//这个也是文件的路径和上面的dom.value是一样的
+		var reader = new FileReader();
+		reader.onload = (function (file) {
+			return function (e) {
+				$('.user-header').attr('src',this.result);
+			};
+		})(e.target.files[0]);
+		reader.readAsDataURL(e.target.files[0]);
+	}
+
+	$('.user-header').click(function () {
+		$("#file").click();
 	});
 </script>
 </html>

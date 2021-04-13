@@ -9,14 +9,37 @@
                                 human_major_id,hunma_major_name,human_pro_designation,human_name,human_sex,human_email,human_telephone,human_qq,human_mobilephone,human_address,
                                 human_postcode,human_nationality,human_birthplace,human_birthday,human_race,human_religion,human_party,human_id_card,human_society_security_id,
                                 human_age,human_educated_degree,human_educated_years,human_educated_major,salary_standard_id,salary_standard_name,human_bank,human_account,
-                                register,regist_time,human_speciality,human_hobby,human_family_membership,remark
+                                register,regist_time,human_speciality,human_hobby,human_family_membership,remark,human_picture
                                 )
                             values (
                                 #{human_id},#{first_kind_id},#{first_kind_name},#{second_kind_id},#{second_kind_name},#{third_kind_id},#{third_kind_name},#{human_major_kind_id},#{human_major_kind_name},
                                 #{human_major_id},#{hunma_major_name},#{human_pro_designation},#{human_name},#{human_sex},#{human_email},#{human_telephone},#{human_qq},#{human_mobilephone},#{human_address},
                                 #{human_postcode},#{human_nationality},#{human_birthplace},#{human_birthday},#{human_race},#{human_religion},#{human_party},#{human_id_card},#{human_society_security_id},
                                 #{human_age},#{human_educated_degree},#{human_educated_years},#{human_educated_major},#{salary_standard_id},#{salary_standard_name},#{human_bank},#{human_account},
-                                #{register},#{regist_time},#{human_speciality},#{human_hobby},#{human_family_membership},#{remark}
+                                #{register},#{regist_time},#{human_speciality},#{human_hobby},#{human_family_membership},#{remark},#{human_picture}
                             )
     </insert>
+    
+    <!--查询所有待复核的职员信息-->
+    <select id="getHumanFile" resultType="com.ck.entity.Human_File">
+        select human_id,human_name,human_sex,first_kind_name,
+                second_kind_name,third_kind_name,human_pro_designation
+                    from HumanFile where human_file_status = 1
+    </select>
+
+    <!--根据职员编号查询该职员信息-->
+    <select id="getHumanFileById" resultType="com.ck.entity.Human_File">
+        select * from HumanFile where human_id=#{human_id}
+    </select>
+
+    <!--复核职员档案信息-->
+    <update id="checkHumanFile" parameterType="com.ck.entity.Human_File">
+        update HumanFile set human_name=#{human_name},human_sex=#{human_sex},human_email=#{human_email},human_telephone=#{human_telephone},human_qq=#{human_qq},human_mobilephone=#{human_mobilephone},human_address=#{human_address},
+                                human_postcode=#{human_postcode},human_nationality=#{human_nationality},human_birthplace=#{human_birthplace},human_birthday=#{human_birthday},
+                                human_race=#{human_race},human_religion=#{human_religion},human_party=#{human_party},human_id_card=#{human_id_card},human_society_security_id=#{human_society_security_id},human_age=#{human_age},
+                                human_educated_degree=#{human_educated_degree},human_educated_years=#{human_educated_years},human_educated_major=#{human_educated_major},salary_standard_id=#{salary_standard_id},
+                                salary_standard_name=#{salary_standard_name},human_bank=#{human_bank},human_account=#{human_account},
+                                checker=#{checker},check_time=#{check_time},human_speciality=#{human_speciality},human_hobby=#{human_hobby},check_status=1,human_file_status=2
+                        where human_id=#{human_id}
+    </update>
 </mapper>

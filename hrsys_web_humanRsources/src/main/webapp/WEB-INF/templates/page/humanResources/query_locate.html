@@ -3,23 +3,23 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link rel="stylesheet"
-			href="../../css/table.css" type="text/css" />
+			href="css/table.css" type="text/css" />
 		<link rel="stylesheet"
-			href="../../css/cwcalendar.css" type="text/css">
+			href="css/cwcalendar.css" type="text/css">
 		<script type="text/javascript"
-			src="../../javascript/comm/comm.js">
+			src="javascript/comm/comm.js">
 		</script>
 		<script type="text/javascript"
-			src="../../javascript/comm/list.js">
+			src="javascript/comm/list.js">
 		</script>
 		<script type="text/javascript"
-			src="../../javascript/calendar-ch.js">
+			src="javascript/calendar-ch.js">
 		</script>
 		<script type="text/javascript"
-			src="../../javascript/jquery-1.7.2.js">
+			src="javascript/jquery-1.7.2.js">
 		</script>
 		<script type="text/javascript"
-			src="../../javascript/locate.js">
+			src="javascript/locate.js">
 		</script>
 	</head>
 
@@ -51,13 +51,13 @@
 						<select name="humanFile.firstKindId" size="5" id="firstKind"
 							class="SELECT_STYLE2">
 							<option value="" selected="selected">全部</option>
-							
+								<!--
 								<option value="1353318953319">Ⅰ级结构</option>
 							
 								<option value="1353318929919">集团</option>
 							
 								<option value="1353318937391">总部</option>
-							
+								-->
 						</select>
 					</td>
 				</tr>
@@ -71,7 +71,7 @@
 							<option value="" selected="selected">
 								全部
 							</option>
-							
+								<!--
 								<option value="1353318983380">Ⅱ级结构2</option>
 							
 								<option value="1353318986625">Ⅱ级结构3</option>
@@ -91,7 +91,7 @@
 								<option value="1353319043830">湖北分校区</option>
 							
 								<option value="1353318979558">Ⅱ级结构1</option>
-							
+								-->
 						</select>
 					</td>
 				</tr>
@@ -104,7 +104,7 @@
 							<option value="" selected="selected">
 								全部
 							</option>
-							
+								<!--
 								<option value="1353319130551">外包公司</option>
 							
 								<option value="1353319150238">软件股份有限公司</option>
@@ -124,7 +124,7 @@
 								<option value="1353319077370">Ⅲ级结构111</option>
 							
 								<option value="1353319096948">Ⅲ级结构222</option>
-							
+								-->
 						</select>
 					</td>
 				</tr>
@@ -138,7 +138,7 @@
 							<option value="" selected="selected">
 								全部
 							</option>
-							
+								<!--
 								<option value="01">销售</option>
 							
 								<option value="02">软件开发</option>
@@ -146,7 +146,7 @@
 								<option value="03">人力资源</option>
 							
 								<option value="04">生产部</option>
-							
+								-->
 						</select>
 					</td>
 				</tr>
@@ -159,7 +159,7 @@
 							<option value="" selected="selected">
 								全部
 							</option>
-							
+								<!--
 								<option value="01">区域经理</option>
 							
 								<option value="02">总经理</option>
@@ -175,7 +175,7 @@
 								<option value="01">主任</option>
 							
 								<option value="02">技术工人</option>
-							
+								-->
 						</select>
 					</td>
 				</tr>
@@ -195,4 +195,20 @@
 			</table>
 		</form>
 	</body>
+<script>
+	$(function () {
+		//加载一级机构
+		$.post(
+				"getFirstKind",
+				{},
+				function (data) {
+					for (let i=0;i < data.length;i++){
+						let context = "<option value="+data[i].first_kind_id+">"+data[i].first_kind_name+"</option>";
+						$("#firstKind").append(context);
+					}
+				},
+				"json"
+		);
+	})
+</script>
 </html>

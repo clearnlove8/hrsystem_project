@@ -1,9 +1,10 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-trasitional.dtd">
-<html>
+﻿<!DOCTYPE html>
+<!--suppress ALL -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link rel="stylesheet"
-			href="../../css/table.css" type="text/css"/>
+			href="css/table.css" type="text/css"/>
 	</head>
 	<body>
 		<form method="post" action="">
@@ -15,7 +16,7 @@
 				</tr>
 				<tr>
 					<td>
-						当前等待复核的人力资源档案总数： 2 例
+						当前等待复核的人力资源档案总数:<span th:text="${humanFiles.size()}">2</span>例
 					</td>
 				</tr>
 			</table>
@@ -49,33 +50,33 @@
 					</td>
 				</tr>
 				
-				<tr>
-					<td class="TD_STYLE2">
+				<tr th:each="human:${humanFiles}">
+					<td class="TD_STYLE2" th:text="${human.human_id}">
 						bt201211190711260800
 					</td>
-					<td class="TD_STYLE2">
+					<td class="TD_STYLE2" th:text="${human.human_name}">
 						姜凯
 					</td>
-					<td class="TD_STYLE2">
+					<td class="TD_STYLE2" th:text="${human.human_sex}">
 						男
 					</td>
-					<td class="TD_STYLE2">
+					<td class="TD_STYLE2" th:text="${human.first_kind_name}">
 						总部
 					</td>
-					<td class="TD_STYLE2">
+					<td class="TD_STYLE2" th:text="${human.second_kind_name}">
 						请选择
 					</td>
-					<td class="TD_STYLE2">
+					<td class="TD_STYLE2" th:text="${human.third_kind_name}">
 						请选择
 					</td>
-					<td class="TD_STYLE2">
+					<td class="TD_STYLE2" th:text="${human.human_pro_designation}">
 						工程师
 					</td>
 					<td class="TD_STYLE2">
-						<a href="human_check.html">复核</a>
+						<a th:href="@{getHumanFileById(human_id=${human.human_id})}">复核</a>
 					</td>
 				</tr>
-				
+				<!--
 				<tr>
 					<td class="TD_STYLE2">
 						bt201211190711160488
@@ -102,23 +103,13 @@
 						<a href="human_check.html">复核</a>
 					</td>
 				</tr>
-				
+				-->
 			</table>
 			<p style="text-align: center;">
 				
 					<a href="check_list.html" style="color:black;">首页</a>
-					
-					
-						 
-							 
-							    <font style="color:red;">1</font> 
-							 
-							 
-						 
-					
-					 
-     				<a href="check_list.html" style="color:black;">尾页</a> 
-				
+							    <font style="color:red;">1</font>
+     				<a href="check_list.html" style="color:black;">尾页</a>
 			</p>
 		</form>
 	</body>
