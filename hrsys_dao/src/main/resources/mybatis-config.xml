@@ -32,5 +32,6 @@
         <mapper resource="mappers/Major_Kind.xml"></mapper>
         <mapper resource="mappers/Major.xml"></mapper>
         <mapper resource="mappers/Human_File.xml"></mapper>
+        <mapper resource="mappers/Engage_major_release.xml"></mapper>
     </mappers>
 </configuration>
