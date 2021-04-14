@@ -23,4 +23,9 @@ public class Third_Kind_ServiceImpl implements IThird_Kind_Service {
     public List<Third_Kind> getThird_KindById(int second_kind_id) {
         return iThirdKindDao.getThird_KindById(second_kind_id);
     }
+
+    @Override
+    public List<Third_Kind> getThird_Kind() {
+        return iThirdKindDao.getThird_Kind();
+    }
 }

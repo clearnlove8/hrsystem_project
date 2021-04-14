@@ -14,4 +14,5 @@ public interface IFirst_Kind_Dao {
     //查询所有的一级机构名称
     public List<First_Kind> getFirstKind();
 
+
 }

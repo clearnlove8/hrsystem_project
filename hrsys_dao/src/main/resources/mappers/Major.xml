@@ -8,6 +8,11 @@
         select * from Config_major where major_kind_id=#{id}
     </select>
 
+    <!--查询所有职称名称-->
+    <select id="getMajor" resultMap="major">
+        select * from Config_major
+    </select>
+
     <!--resultMap属性字段-->
     <resultMap id="major" type="com.ck.entity.Major">
         <result column="mak_id" property="mak_id"/>

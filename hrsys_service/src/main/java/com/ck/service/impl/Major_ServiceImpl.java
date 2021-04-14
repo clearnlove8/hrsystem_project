@@ -24,4 +24,9 @@ public class Major_ServiceImpl implements IMajor_Service {
     public List<Major> get_MajorById(int major_kind_id) {
         return iMajorDao.get_MajorById(major_kind_id);
     }
+
+    @Override
+    public List<Major> getMajor() {
+        return iMajorDao.getMajor();
+    }
 }

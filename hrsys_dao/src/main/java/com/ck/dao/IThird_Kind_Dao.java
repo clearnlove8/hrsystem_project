@@ -14,4 +14,6 @@ public interface IThird_Kind_Dao {
     //根据二级机构编号查询所对应的三级机构
     public List<Third_Kind> getThird_KindById(int second_kind_id);
 
+    //查询所有的三级机构
+    public List<Third_Kind> getThird_Kind();
 }

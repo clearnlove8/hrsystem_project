@@ -13,4 +13,7 @@ public interface ISecond_Kind_Dao {
 
     //根据一级机构的编号查询所有对应的二级机构
     public List<Second_Kind> getSecond_KindById(int first_kind_id);
+
+    //查询所有的二级机构
+    public List<Second_Kind> getSecond_Kind();
 }

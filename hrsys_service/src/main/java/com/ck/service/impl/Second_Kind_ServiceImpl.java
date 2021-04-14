@@ -23,4 +23,9 @@ public class Second_Kind_ServiceImpl implements ISecond_Kind_Service {
     public List<Second_Kind> getSecond_KindById(int first_kind_id) {
         return iSecondKindDao.getSecond_KindById(first_kind_id);
     }
+
+    @Override
+    public List<Second_Kind> getSecond_Kind() {
+        return iSecondKindDao.getSecond_Kind();
+    }
 }

@@ -69,6 +69,7 @@
       <element id="javaee-facet-resources" facet="hrsys_web_user/web/Web" />
       <element id="artifact" artifact-name="hrsys_web_index:war exploded" />
       <element id="artifact" artifact-name="hrsys_web_humanRsources:war exploded" />
+      <element id="artifact" artifact-name="hrsys_web_position:war exploded" />
     </root>
   </artifact>
 </component>

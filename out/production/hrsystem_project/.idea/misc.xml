@@ -5,6 +5,7 @@
     <file type="web" url="file://$PROJECT_DIR$/hrsys/hrsys_web_user" />
     <file type="web" url="file://$PROJECT_DIR$/hrsys_web_humanRsources" />
     <file type="web" url="file://$PROJECT_DIR$/hrsys_web_index" />
+    <file type="web" url="file://$PROJECT_DIR$/hrsys_web_position" />
     <file type="web" url="file://$PROJECT_DIR$/hrsys_web_user" />
   </component>
   <component name="JavaScriptSettings">

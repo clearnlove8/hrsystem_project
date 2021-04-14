@@ -7,6 +7,12 @@
     <select id="getThird_KindById" resultMap="third_kind">
         select * from Config_file_third_kind where second_kind_id=#{id}
     </select>
+
+    <!--获取所有的三级机构-->
+    <select id="getThird_Kind" resultMap="third_kind">
+        select * from Config_file_third_kind
+    </select>
+
     <resultMap id="third_kind" type="com.ck.entity.Third_Kind">
         <result property="ftk_id" column="ftk_id"/>
         <result property="first_kind_id" column="first_kind_id"/>

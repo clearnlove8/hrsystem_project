@@ -7,6 +7,11 @@
         select * from Config_file_second_kind where first_kind_id=#{id}
     </select>
 
+    <!--查询所有的二级机构-->
+    <select id="getSecond_Kind" resultMap="second_kind">
+        select * from Config_file_second_kind
+    </select>
+
     <!--resultMap属性字段映射-->
     <resultMap id="second_kind" type="com.ck.entity.Second_Kind">
         <result column="fsk_id" property="fsk_id"/>

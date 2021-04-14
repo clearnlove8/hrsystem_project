@@ -53,9 +53,7 @@
 							<option value="" selected="selected">全部</option>
 								<!--
 								<option value="1353318953319">Ⅰ级结构</option>
-							
 								<option value="1353318929919">集团</option>
-							
 								<option value="1353318937391">总部</option>
 								-->
 						</select>
@@ -73,23 +71,14 @@
 							</option>
 								<!--
 								<option value="1353318983380">Ⅱ级结构2</option>
-							
 								<option value="1353318986625">Ⅱ级结构3</option>
-							
 								<option value="1353318990197">Ⅱ级结构4</option>
-							
 								<option value="1353318995252">Ⅱ级结构5</option>
-							
 								<option value="1353319004705">软件公司</option>
-							
 								<option value="1353319016546">科技公司</option>
-							
 								<option value="1353319033409">北京分校区</option>
-							
 								<option value="1353319038682">湖南分校区</option>
-							
 								<option value="1353319043830">湖北分校区</option>
-							
 								<option value="1353318979558">Ⅱ级结构1</option>
 								-->
 						</select>
@@ -106,23 +95,14 @@
 							</option>
 								<!--
 								<option value="1353319130551">外包公司</option>
-							
 								<option value="1353319150238">软件股份有限公司</option>
-							
 								<option value="1353319177944">中关村分校区1</option>
-							
 								<option value="1353319185073">中关村分校区2</option>
-							
 								<option value="1353319193840">中关村分校区3</option>
-							
 								<option value="1353319216320">长沙分校区1</option>
-							
 								<option value="1353319228535">长沙分校区2</option>
-							
 								<option value="1353319236725">长沙分校区3</option>
-							
 								<option value="1353319077370">Ⅲ级结构111</option>
-							
 								<option value="1353319096948">Ⅲ级结构222</option>
 								-->
 						</select>
@@ -140,11 +120,8 @@
 							</option>
 								<!--
 								<option value="01">销售</option>
-							
 								<option value="02">软件开发</option>
-							
 								<option value="03">人力资源</option>
-							
 								<option value="04">生产部</option>
 								-->
 						</select>
@@ -161,19 +138,12 @@
 							</option>
 								<!--
 								<option value="01">区域经理</option>
-							
 								<option value="02">总经理</option>
-							
 								<option value="01">项目经理</option>
-							
 								<option value="02">程序员</option>
-							
 								<option value="01">人事经理</option>
-							
 								<option value="02">专员</option>
-							
 								<option value="01">主任</option>
-							
 								<option value="02">技术工人</option>
 								-->
 						</select>
@@ -208,6 +178,50 @@
 					}
 				},
 				"json"
+		);
+
+		//加载二级机构
+		$.post(
+				"getSecondKind",
+				function (data) {
+					for (let i=0;i < data.length;i++){
+						let context = "<option value="+data[i].second_kind_id+">"+data[i].second_kind_name+"</option>";
+						$("#secondKind").append(context);
+					}
+				}
+		);
+
+		//加载三级机构
+		$.post(
+				"getThirdKind",
+				function (data) {
+					for (let i=0;i < data.length;i++){
+						let context = "<option value="+data[i].third_kind_id+">"+data[i].third_kind_name+"</option>";
+						$("#thirdKind").append(context);
+					}
+				}
+		);
+
+		//加载职位分类
+		$.post(
+			"getMajorKind",
+			function (data) {
+				for (let i=0;i < data.length;i++){
+					let context = "<option value="+data[i].major_kind_id+">"+data[i].major_kind_name+"</option>";
+					$("#majorKind").append(context);
+				}
+			}
+		);
+
+		//加载职位名称
+		$.post(
+			"getMajor",
+			function (data) {
+				for (let i=0;i < data.length;i++){
+					let context = "<option value="+data[i].major_id+">"+data[i].major_name+"</option>";
+					$("#majorName").append(context);
+				}
+			}
 		);
 	})
 </script>

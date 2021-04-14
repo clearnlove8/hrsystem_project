@@ -54,6 +54,24 @@ public class PublicHandler {
         return firstKind;
     }
 
+
+    //获取所有的二级机构
+    @RequestMapping("getSecondKind")
+    @ResponseBody
+    public List<Second_Kind> getSecondKind(){
+        List<Second_Kind> secondKind = iSecondKindService.getSecond_Kind();
+        return secondKind;
+    }
+
+    //获取所有的三级机构
+    @RequestMapping("getThirdKind")
+    @ResponseBody
+    public List<Third_Kind> getThirdKind(){
+        List<Third_Kind> thirdKind = iThirdKindService.getThird_Kind();
+        return thirdKind;
+    }
+
+
     //根据一级机构编号获取二级机构
     @RequestMapping("getSecondKindById")
     @ResponseBody
@@ -73,6 +91,13 @@ public class PublicHandler {
     @ResponseBody
     public List<Major_Kind> getMajorKind(){
         return iMajorKindService.getMajor_Kind();
+    }
+
+    //获取所有职位名称
+    @RequestMapping("getMajor")
+    @ResponseBody
+    public List<Major> getMajor(){
+        return iMajorService.getMajor();
     }
 
     //根据职称分类获取职位名称
