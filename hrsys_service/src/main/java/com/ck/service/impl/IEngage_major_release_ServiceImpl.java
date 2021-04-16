@@ -31,16 +31,19 @@ public class IEngage_major_release_ServiceImpl implements IEngage_major_release_
         return iEngage_major_release_dao.QueryEngage_major_release();
     }
 
+    //修改职业发布信息
     @Override
     public void UpdateEngage_major_release(Engage_major_release engage_major_release) {
        iEngage_major_release_dao.UpdateEngage_major_release(engage_major_release);
     }
 
+    //根据id查询
     @Override
     public Engage_major_release QueryEngage_major_releaseById(int id) {
         return iEngage_major_release_dao.QueryEngage_major_releaseById(id);
     }
 
+    //根据id删除
     @Override
     public void DelEngage_major_releaseById(int id) {
     iEngage_major_release_dao.DelEngage_major_releaseById(id);
