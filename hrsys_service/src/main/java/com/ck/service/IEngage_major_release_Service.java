@@ -1,6 +1,7 @@
 package com.ck.service;
 
 import com.ck.entity.Engage_major_release;
+import com.github.pagehelper.Page;
 
 import java.util.List;
 
@@ -15,7 +16,7 @@ public interface IEngage_major_release_Service {
     void  AddEngage_major_release(Engage_major_release engage_major_release);
 
     //查询职业发布
-    List<Engage_major_release> QueryEngage_major_release();
+    Page<Object> QueryEngage_major_release(int currentPage,int PageSize);
 
     //修改职业发布信息
     void  UpdateEngage_major_release (Engage_major_release  engage_major_release);

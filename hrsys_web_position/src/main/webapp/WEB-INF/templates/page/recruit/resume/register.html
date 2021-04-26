@@ -1,28 +1,28 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-trasitional.dtd">
+﻿	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-trasitional.dtd">
 <html>
   <head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
        <link rel="stylesheet"
-			href="../../../css/table.css" type="text/css">
+			href="css/table.css" type="text/css">
 		<link rel="stylesheet"
-			href="../../../css/cwcalendar.css" type="text/css">
+			href="css/cwcalendar.css" type="text/css">
 		<script type="text/javascript"
-			src="../../../javascript/comm/comm.js">
+			src="javascript/comm/comm.js">
 		</script>
 		<script type="text/javascript"
-			src="../../../javascript/comm/list.js">
+			src="javascript/comm/list.js">
 		</script>
 		<script type="text/javascript"
-			src="../../../javascript/calendar-ch.js">
+			src="javascript/calendar-ch.js">
 		</script>
 		<script type="text/javascript"
-			src="../../../javascript/jquery-1.7.2.js">
+			src="javascript/jquery-1.7.2.js">
 		</script>
 		<script type="text/javascript"
-			src="../../../javascript/locate.js">
+			src="javascript/locate.js">
 		</script>
 		<script type="text/javascript"
-			src="../../../javascript/select.js">
+			src="javascript/select.js">
 		</script>
 			<script type="text/javascript">
  			window.onload=check;
@@ -78,16 +78,17 @@
  		}
  		if(document.getElementById("card").value==""){
 	 		alert("请填写身份证号码");
+
 	 		return false;
  		} 
  		if(document.getElementById("birthday").value!=""){
-	 		var str = document.getElementById("birthday").value; 
-	 		var r = str.match(/^(\d{1,4})(-|\/)(\d{1,2})\2(\d{1,2})$/); 
+	 		var str = document.getElementById("birthday").value;
+	 		var r = str.match(/^(\d{1,4})(-|\/)(\d{1,2})\2(\d{1,2})$/);
 	 		 if(r==null){
 	 		 alert("请输入正确的日期格式：yyyy-MM-dd");
 	 		return false;
 	 		}
- 		} 
+ 		}
  		if(document.getElementById("email").value!=""){
 	 		var email=document.getElementById("email").value;
 	 		if(email.indexOf(".")<=-1 || email.indexOf("@")<=-1){
@@ -122,9 +123,162 @@
  		document.fm.submit();
  		}
  		</script>
+	  <script>
+		  $(function () {
+		  //清空职业分类
+		  // $("#majorKindId option").remove();
+		  $.post(
+				  "getMajorKind",
+				  function (data) {
+					  //查询职业分类信息
+					  for (let i=0;i < data.length;i++){
+						  let context = "<option value="+data[i].major_kind_id+">"+data[i].major_kind_name+"</option>";
+						  $("#majorKindId").append(context);
+					  }
+				  }
+		  );
+		  $("#majorKindId").change(function () {
+			  //改变时获取它的文本
+			  let one=$(this).find("option:selected").text();
+			  $("[name='human_major_kind_name']").val(one);
+
+			  //如果职业分类发生改变获取改变的内容的id
+			  let major_kind_id=$("#majorKindId").val();
+			  //根据条件查询
+			  $.post(
+					  "getMajorById",
+					  {
+						  "major_kind_id":major_kind_id
+					  },
+					  function (data) {
+						  //查询职业分类信息
+						  for (let i=0;i < data.length;i++){
+							  let context = "<option value="+data[i].major_id+">"+data[i].major_name+"</option>";
+							  $("#majorId").append(context);
+						  }
+					  }
+			  );
+
+			  $("#majorId").change(function () {
+				  //改变时获取它的文本
+				  let one=$(this).find("option:selected").text();
+				  $("[name='human_major_name']").val(one);
+			  });
+		  });
+
+		  //使用ajax查询国籍信息 并把信息添加到下拉框中
+			  $.ajax({
+				  url: 'JsonQueryPublicChar',
+				  success: function (data) {
+					  for (let i = 0; i < data.length; i++) {
+						  if(data[i].attribute_kind=="国籍"){
+								  $("#human_nationality").append("<option  value='" + data[i].attribute_name+ "'>" + data[i].attribute_name + "</option>")
+						  }
+					  }
+				  }
+			  });
+
+			  //使用ajax查询民族信息 并把信息添加到下拉框中
+			  $.ajax({
+				  url: 'JsonQueryPublicChar',
+				  success: function (data) {
+					  for (let i = 0; i < data.length; i++) {
+						  if(data[i].attribute_kind=="民族"){
+							  $("#human_race").append("<option  value='" + data[i].attribute_name+ "'>" + data[i].attribute_name + "</option>")
+						  }
+					  }
+				  }
+			  });
+
+			  //使用ajax查询宗教信息 并把信息添加到下拉框中
+			  $.ajax({
+				  url: 'JsonQueryPublicChar',
+				  success: function (data) {
+					  for (let i = 0; i < data.length; i++) {
+						  if(data[i].attribute_kind=="宗教"){
+							  $("#human_religion").append("<option  value='" + data[i].attribute_name+ "'>" + data[i].attribute_name + "</option>")
+						  }
+					  }
+				  }
+			  });
+
+			  //使用ajax查询专业信息 并把信息添加到下拉框中
+			  $.ajax({
+				  url: 'JsonQueryPublicChar',
+				  success: function (data) {
+					  for (let i = 0; i < data.length; i++) {
+						  if(data[i].attribute_kind=="专业"){
+							  $("#human_educated_major").append("<option  value='" + data[i].attribute_name+ "'>" + data[i].attribute_name + "</option>")
+						  }
+					  }
+				  }
+			  });
+
+			  //使用ajax查询学历信息 并把信息添加到下拉框中
+			  $.ajax({
+				  url: 'JsonQueryPublicChar',
+				  success: function (data) {
+					  for (let i = 0; i < data.length; i++) {
+						  if(data[i].attribute_kind=="学历"){
+							  $("#human_educated_degree").append("<option  value='" + data[i].attribute_name+ "'>" + data[i].attribute_name + "</option>")
+						  }
+					  }
+				  }
+			  });
+
+			  //使用ajax查询教育年限信息 并把信息添加到下拉框中
+			  $.ajax({
+				  url: 'JsonQueryPublicChar',
+				  success: function (data) {
+					  for (let i = 0; i < data.length; i++) {
+						  if(data[i].attribute_kind=="教育年限"){
+							  $("#human_educated_years").append("<option  value='" + data[i].attribute_name+ "'>" + data[i].attribute_name + "</option>")
+						  }
+					  }
+				  }
+			  });
+
+			  //使用ajax查询特长信息 并把信息添加到下拉框中
+			  $.ajax({
+				  url: 'JsonQueryPublicChar',
+				  success: function (data) {
+					  for (let i = 0; i < data.length; i++) {
+						  if(data[i].attribute_kind=="特长"){
+							  $("#human_specility").append("<option  value='" + data[i].attribute_name+ "'>" + data[i].attribute_name + "</option>")
+						  }
+					  }
+				  }
+			  });
+
+			  //使用ajax查询政治面貌信息 并把信息添加到下拉框中
+			  $.ajax({
+				  url: 'JsonQueryPublicChar',
+				  success: function (data) {
+					  for (let i = 0; i < data.length; i++) {
+						  if(data[i].attribute_kind=="政治面貌"){
+							  $("#human_party").append("<option  value='" + data[i].attribute_name+ "'>" + data[i].attribute_name + "</option>")
+						  }
+					  }
+				  }
+			  });
+
+			  //使用ajax查询爱好信息 并把信息添加到下拉框中
+			  $.ajax({
+				  url: 'JsonQueryPublicChar',
+				  success: function (data) {
+					  for (let i = 0; i < data.length; i++) {
+						  if(data[i].attribute_kind=="爱好"){
+							  $("#human_hobby").append("<option  value='" + data[i].attribute_name+ "'>" + data[i].attribute_name + "</option>")
+						  }
+					  }
+				  }
+			  });
+
+		  })
+	  </script>
 	</head>
 	<body>
-	<form id="recruitAction!saveEngageResume" name="fm" action="/HR_Fist/recruit/recruitAction!saveEngageResume" method="post" enctype="multipart/form-data">
+	<form id="recruitAction!saveEngageResume" name="fm" action="AddEngage_resume" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="engageResume.passCheckcomment" value="不通过"/>
 			<input type="hidden" name="engageResume.passPasscomment" value="不通过"/>
 	 		<input type="hidden" name="engageResume.checkStatus" value="false"/>
@@ -150,10 +304,12 @@
 						<td class="TD_STYLE1">
 						职位分类
 					</td>
-					<td class="TD_STYLE2">  
-						 <input type="hidden" value="01" id="humanMajorKindId" name="engageResume.humanMajorKindId" />
-					<select name="engageResume.humanMajorKindName" class="SELECT_STYLE1">
-						<option value="销售">销售</option>
+					<td class="TD_STYLE2">
+						<input type="hidden" name="register" value="zhagsan"/>
+						 <input type="hidden"  name="human_major_kind_name" />
+					<select name="human_major_kind_id" class="SELECT_STYLE1" id="majorKindId">
+<!--						<option value="销售">销售</option>-->
+						<option value="">请选择</option>
 					</select>		
 					</td>
 					<td class="TD_STYLE1">
@@ -161,17 +317,19 @@
 					</td>
 					<td class="TD_STYLE2" width="20%"> 
 				  
-					 <input type="hidden" value="02" name="engageResume.humanMajorId" />
-					<select name="engageResume.humanMajorName" class="SELECT_STYLE1">
-						<option value="总经理">总经理</option>
+					 <input type="hidden"  name="human_major_name" />
+					<select name="human_major_id" class="SELECT_STYLE1" id="majorId">
+<!--						<option value="总经理">总经理</option>-->
+						<option value="">请选择</option>
 					</select>
 					</td>
 					<td width="11%" class="TD_STYLE1">
 						招聘类型
 					</td>
 					<td class="TD_STYLE2" colspan="2"> 
-					<select name="engageResume.engageType" class="SELECT_STYLE1">
+					<select name="engage_type" class="SELECT_STYLE1">
 						<option value="社会招聘">社会招聘</option>
+						<option value="校园招聘">校园招聘</option>
 					</select>
 					</td>
 					<td rowspan="6" >
@@ -183,20 +341,20 @@
 						姓名
 					</td>
 					<td class="TD_STYLE2">
-						 <input type="text"  name="engageResume.humanName" id="name" class="INPUT_STYLE2"/>
+						 <input type="text"  name="human_name" id="name" class="INPUT_STYLE2"/>
 					</td>
 					<td class="TD_STYLE1">
 						性别
 					</td>
 					<td class="TD_STYLE2">
-						<select name="engageResume.humanSex"  class="SELECT_STYLE1"><option value="男">男</option>
+						<select name="human_sex"  class="SELECT_STYLE1"><option value="男">男</option>
 							<option value="女">女</option></select>
 					</td>
 					<td class="TD_STYLE1">
 						EMAIL
 					</td>
 					<td colspan="2" class="TD_STYLE2">
-						<input type="text" name="engageResume.humanEmail" id="email" class="INPUT_STYLE2">
+						<input type="text" name="human_email" id="email" class="INPUT_STYLE2">
 					</td>
 				</tr>
 				<tr>
@@ -204,19 +362,19 @@
 					电话
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="engageResume.humanTelephone"  id="phone" class="INPUT_STYLE2">
+						<input type="text" name="human_telephone"  id="phone" class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
 						家庭电话
 					</td>
 					<td class="TD_STYLE2">
-					 <input type="text" name="engageResume.humanHomephone" id="humanHomephone" class="INPUT_STYLE2">
+					 <input type="text" name="human_homephone" id="humanHomephone" class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
 						手机
 					</td>
 					<td colspan="2" class="TD_STYLE2">
-						<input type="text" name="engageResume.humanMobilephone" id="humanMobilephone" class="INPUT_STYLE2">
+						<input type="text" name="human_mobilephone" id="humanMobilephone" class="INPUT_STYLE2">
 					</td>
 				</tr>
 				<tr>
@@ -224,14 +382,14 @@
 						住址
 					</td>
 					<td colspan="3" class="TD_STYLE2">
-						<input type="text" name="engageResume.humanAddress" value="" class="INPUT_STYLE2">
+						<input type="text" name="human_address" value="" class="INPUT_STYLE2">
 					</td>
 					 
 					<td class="TD_STYLE1">
 						邮编
 					</td>
 					<td colspan="2" class="TD_STYLE2">
-						<input type="text" name="engageResume.humanPostcode" value="" class="INPUT_STYLE2">
+						<input type="text" name="human_postcode" value="" class="INPUT_STYLE2">
 					</td>
 				</tr>
 				 
@@ -240,26 +398,24 @@
 						国籍
 					</td>
 					<td class="TD_STYLE2">
-					 <select name="engageResume.humanNationality"   class="SELECT_STYLE1">
+					 <select name="human_nationality"   class="SELECT_STYLE1" id="human_nationality">
 							<option value="">--请选择--</option> 
-							
-							<option value="中国">中国</option> 
-							
-							<option value="美国">美国</option> 
-							
-					 </select> 
+<!--							<option value="中国">中国</option> -->
+<!--							-->
+<!--							<option value="美国">美国</option> -->
+					 </select>
 					</td>
 					<td class="TD_STYLE1">
 						出生地
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="engageResume.humanBirthplace" value="" class="INPUT_STYLE2">
+						<input type="text" name="human_birthplace" class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
 						生日
 					</td>
 					<td width="13%" colspan="2" class="TD_STYLE2">
-						<input type="text" name="engageResume.humanBirthday" id="birthday" class="INPUT_STYLE2"  >
+						<input type="text" name="human_birthday" id="birthday" class="INPUT_STYLE2"  >
 					</td>
 					
 				</tr>
@@ -268,12 +424,12 @@
 						民族
 					</td>
 					<td class="TD_STYLE2" width="14%">
-				 	 <select name="engageResume.humanRace"   class="SELECT_STYLE1">
+				 	 <select name="human_race"   class="SELECT_STYLE1" id="human_race">
 							<option value="">--请选择--</option> 
-							
-							<option value="汉族">汉族</option> 
-							
-							<option value="回族">回族</option> 
+<!--							-->
+<!--							<option value="汉族">汉族</option> -->
+<!--							-->
+<!--							<option value="回族">回族</option> -->
 							
 					 </select>  
 					</td>
@@ -281,11 +437,11 @@
 						宗教信仰
 					</td>
 					<td class="TD_STYLE2">
-					   <select name="engageResume.humanReligion"   class="SELECT_STYLE1"> 
+					   <select name="human_religion"   class="SELECT_STYLE1" id="human_religion">
 							
-							<option value="无">无</option> 
+<!--							<option value="无">无</option> -->
 							
-							<option value="佛教">佛教</option> 
+<!--							<option value="佛教">佛教</option> -->
 							
 					 </select>  
 					</td>
@@ -293,12 +449,12 @@
 						政治面貌
 					</td>
 					<td class="TD_STYLE2" colspan="2">
-					   <select name="engageResume.humanParty"   class="SELECT_STYLE1">
+					   <select name="human_party"   class="SELECT_STYLE1" id="human_party">
 							<option value="">--请选择--</option> 
 							
-							<option value="党员">党员</option> 
-							
-							<option value="群众">群众</option> 
+<!--							<option value="党员">党员</option> -->
+<!--							-->
+<!--							<option value="群众">群众</option> -->
 							
 					 </select>  	  
 					</td>
@@ -310,31 +466,31 @@
 						身份证号码
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="engageResume.humanIdcard" value="" id="card" class="INPUT_STYLE2">
+						<input type="text" name="human_idcard" value="" id="card" class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
 						年龄
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="engageResume.humanAge" id="humanAge" class="INPUT_STYLE2">
+						<input type="text" name="human_age" id="humanAge" class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
 						毕业院校
 					</td>
 					<td class="TD_STYLE2">
-						 <input type="text" name="engageResume.humanCollege" class="INPUT_STYLE2"/>
+						 <input type="text" name="human_college" class="INPUT_STYLE2"/>
 					</td>
 					
 					<td class="TD_STYLE1">
 						学历
 					</td>
 					<td class="TD_STYLE2">
-					  <select name="engageResume.humanEducatedDegree"   class="SELECT_STYLE1">
+					  <select name="human_educated_degree"   class="SELECT_STYLE1" id="human_educated_degree">
 							<option value="">--请选择--</option> 
 							
-							<option value="本科">本科</option> 
-							
-							<option value="大专">大专</option> 
+<!--							<option value="本科">本科</option> -->
+<!--							-->
+<!--							<option value="大专">大专</option> -->
 							
 					 </select> 
 					</td>
@@ -345,12 +501,12 @@
 						教育年限
 					</td>
 					<td class="TD_STYLE2">
-					   <select name="engageResume.humanEducatedYears"   class="SELECT_STYLE1">
+					   <select name="human_educated_years"   class="SELECT_STYLE1" id="human_educated_years">
 							<option value="">--请选择--</option> 
 							
-							<option value="12">12</option> 
-							
-							<option value="16">16</option> 
+<!--							<option value="12">12</option> -->
+<!--							-->
+<!--							<option value="16">16</option> -->
 							
 					 </select> 
 					</td>
@@ -358,12 +514,12 @@
 						学历专业
 					</td>
 					<td class="TD_STYLE2">
-					   <select name="engageResume.humanEducatedMajor"   class="SELECT_STYLE1">
+					   <select name="human_educated_major"   class="SELECT_STYLE1" id="human_educated_major">
 							<option value="">--请选择--</option> 
-							
-							<option value="生物工程">生物工程</option> 
-							
-							<option value="计算机">计算机</option> 
+<!--							-->
+<!--							<option value="生物工程">生物工程</option> -->
+<!--							-->
+<!--							<option value="计算机">计算机</option> -->
 							
 					 </select>  
 					</td>
@@ -372,13 +528,13 @@
 						薪酬要求
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="engageResume.demandSalaryStandard" id="demandSalaryStandard" class="INPUT_STYLE2" />
+						<input type="text" name="demand_salary_standard" id="demandSalaryStandard" class="INPUT_STYLE2" />
 					</td>
 					<td class="TD_STYLE1">
 						注册时间
 					</td>
 					<td class="TD_STYLE2">
-						 <input type="text" name="engageResume.registTime"
+						 <input type="text" name="regist_time"
 							  id="nowTime" readonly="readonly"
 							class="INPUT_STYLE2">
 					</td>
@@ -390,12 +546,12 @@
 						特长
 					</td>
 					<td class="TD_STYLE2">
-					   <select name="engageResume.humanSpecility"   class="SELECT_STYLE1">
+					   <select name="human_specility"   class="SELECT_STYLE1" id="human_specility">
 							<option value="">--请选择--</option> 
 							
-							<option value="数据库">数据库</option> 
-							
-							<option value="java">java</option> 
+<!--							<option value="数据库">数据库</option> -->
+<!--							-->
+<!--							<option value="java">java</option> -->
 							
 					 </select> 
 						 
@@ -404,12 +560,12 @@
 						爱好
 					</td>
 					<td class="TD_STYLE2">
-				     <select name="engageResume.humanHobby"   class="SELECT_STYLE1">
+				     <select name="human_hobby"   class="SELECT_STYLE1" id="human_hobby">
 							<option value="">--请选择--</option> 
 							
-							<option value="篮球">篮球</option> 
-							
-							<option value="舞蹈">舞蹈</option> 
+<!--							<option value="篮球">篮球</option> -->
+<!--							-->
+<!--							<option value="舞蹈">舞蹈</option> -->
 							
 					 </select> 
 						  
@@ -432,7 +588,8 @@
 						个人履历
 					</td>
 					<td colspan="7" class="TD_STYLE2">
-						<textarea name="engageResume.humanHistoryRecords" rows="4" class="TEXTAREA_STYLE1"></textarea>
+						<input type="hidden" value="1" name="interview_status"/>
+						<textarea name="human_history_records" rows="4" class="TEXTAREA_STYLE1"></textarea>
 					</td>
 				</tr>
 				 
@@ -441,7 +598,7 @@
 						备注
 					</td>
 					<td colspan="7" class="TD_STYLE2">
-						<textarea name="engageResume.remark" rows="4" class="TEXTAREA_STYLE1"></textarea>
+						<textarea name="remark" rows="4" class="TEXTAREA_STYLE1"></textarea>
 					</td>
 				</tr>
 			</table>

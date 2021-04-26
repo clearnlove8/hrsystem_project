@@ -66,7 +66,7 @@
 				</tr>
 				
 				
-				<tr th:each="p:${zhiWei}">
+				<tr th:each="p:${pages}">
 						<td class="TD_STYLE2" th:text="${p.major_name}">
 							&#21306;&#22495;&#32463;&#29702;
 						</td>
@@ -114,35 +114,39 @@
 				
 					
 			</table>
-		<p>&nbsp;&nbsp;总数：2 例 &nbsp;&nbsp;&nbsp;当前第1 页 /每页显示 10 条 &nbsp;&nbsp;&nbsp;共 1 页 &nbsp;&nbsp;&nbsp;  
-			<a href="javascript:up('0','1')" >上一页</a> &nbsp;&nbsp;&nbsp;
-			<a href="javascript:down('2','1')" >下一页</a> &nbsp;&nbsp;&nbsp;跳到第 <input name=page type=text class=input1 id="currPage" size=1> 页&nbsp;&nbsp;<input type=image src="../../../images/go.bmp" onclick="tj('1')" width=18 height=18 border=0>
+		<p>&nbsp;&nbsp;
+			<a th:href="@{QueryEngage_major_release(currentPage=1,PageSize=3)}" style="color:black">首页</a>
+			<a th:href="@{QueryEngage_major_release(currentPage=${pages?.pageNum - 1},PageSize=3,countPage=${pages?.pages})}" style="color:black;">上一页</a>
+			<a th:each="i : ${#numbers.sequence(1,pages?.pages)}" th:text="${i}" th:href="@{QueryEngage_major_release(currentPage=${i},PageSize=3)}" style="text-underline: none;color:red">1</a>
+			<a th:href="@{QueryEngage_major_release(currentPage=${pages?.pageNum + 1},PageSize=3,countPage=${pages?.pages})}" style="color:black;">下一页</a>
+			<a th:href="@{QueryEngage_major_release(currentPage=${pages?.pages},PageSize=3)}" style="color:black;">尾页</a>
+		</p>
 		</form>
 		<script type="text/javascript">
-		function up(currPage,row){  
-		if(currPage<=0){
-		document.getElementById("page").value = row;
-		}else{
-		document.getElementById("page").value =currPage; 
-		}
-		 document.fm.submit();
-		}
-		function down(currPage,row){ 
-		if(currPage>=row){
-		document.getElementById("page").value = row;
-		}else{
-		document.getElementById("page").value =currPage; 
-		}
-		 document.fm.submit();
-		}
-		function tj(row){
-	     document.getElementById("page").value = document.getElementById("currPage").value;
-	     if(document.getElementById("currPage").value>row){
-	     alert("最大页数为"+row+",当前为第"+row+"页 ");
-	     return false;
-	     }
-	     document.fm.submit();
-	 	}
+		// function up(currPage,row){
+		// if(currPage<=0){
+		// document.getElementById("page").value = row;
+		// }else{
+		// document.getElementById("page").value =currPage;
+		// }
+		//  document.fm.submit();
+		// }
+		// function down(currPage,row){
+		// if(currPage>=row){
+		// document.getElementById("page").value = row;
+		// }else{
+		// document.getElementById("page").value =currPage;
+		// }
+		//  document.fm.submit();
+		// }
+		// function tj(row){
+	    //  document.getElementById("page").value = document.getElementById("currPage").value;
+	    //  if(document.getElementById("currPage").value>row){
+	    //  alert("最大页数为"+row+",当前为第"+row+"页 ");
+	    //  return false;
+	    //  }
+	    //  document.fm.submit();
+	 	// }
 		</script>
 	</body>
 </html>

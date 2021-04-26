@@ -22,7 +22,7 @@ public interface IEngage_major_release_Dao {
 
 
     //修改职业发布信息
-    @Update("UPDATE Engage_major_release SET engage_type=#{engage_type},human_amount=#{human_amount},deadline=#{deadline},changer=#{changer},regist_time=#{regist_time},major_describe=#{major_describe},engage_required=#{engage_required} WHERE mre_id=#{mre_id}")
+    @Update("UPDATE Engage_major_release SET engage_type=#{engage_type},human_amount=#{human_amount},deadline=#{deadline},changer=#{changer},change_time=#{change_time},major_describe=#{major_describe},engage_required=#{engage_required} WHERE mre_id=#{mre_id}")
     void  UpdateEngage_major_release (Engage_major_release  engage_major_release);
 
     //根据id查询职业发布信息

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--简历配置-->
+<mapper namespace="com.ck.dao.IEngage_resume_Dao">
+
+    <!--简历映射-->
+    <resultMap id="ResumeMapper" type="com.ck.entity.Engage_resume"></resultMap>
+
+    <!--联查映射-->
+    <resultMap id="mapscreen" type="com.ck.entity.Engage_resume">
+        <result column="res_id" property="res_id"></result>
+        <association property="engage_interview" column="res_id" select="com.ck.dao.IEngage_interviewDao.queryBymapscreen2"></association>
+    </resultMap>
+
+    <!--多条件筛选-->
+    <select id="queryBySome" resultMap="ResumeMapper" parameterType="map">
+        SELECT * FROM Engage_resume
+        <where>
+            <if test="human_name != ''">
+                or ( human_name LIKE '%${keyword}%'
+            </if>
+            <if test="human_telephone != ''">
+                or  human_telephone LIKE '%${keyword}%'
+            </if>
+            <if test="human_idcard != ''">
+                or  human_idcard LIKE '%${keyword}%'
+            </if>
+            <if test="human_history_records != ''">
+                or  human_history_records LIKE '%${keyword}%')
+            </if>
+            <if test="human_major_kind_id !='' and human_major_kind_id !=null">
+                or human_major_kind_id = #{human_major_kind_id}
+            </if>
+            <if test="human_major_id !='' and human_major_id !=null">
+                or human_major_id = #{human_major_id}
+            </if>
+            <if test="min != ''">
+                AND regist_time >= #{min}
+            </if>
+            <if test="max != ''">
+                <![CDATA[and regist_time <= #{max}]]>
+            </if>
+        </where>
+        AND pass_check_status = 0;
+    </select>
+
+    <!--有效查询简历-->
+    <select id="queryValidSome" resultMap="ResumeMapper" parameterType="map">
+        SELECT * FROM Engage_resume
+        <where>
+            <if test="human_name != ''">
+                or ( human_name LIKE '%${keyword}%'
+            </if>
+            <if test="human_telephone != ''">
+                or  human_telephone LIKE '%${keyword}%'
+            </if>
+            <if test="human_idcard != ''">
+                or  human_idcard LIKE '%${keyword}%'
+            </if>
+            <if test="human_history_records != ''">
+                or  human_history_records LIKE '%${keyword}%')
+            </if>
+
+            <if test="human_major_kind_id !='' and human_major_kind_id !=null">
+                or human_major_kind_id = #{human_major_kind_id}
+            </if>
+            <if test="human_major_id !='' and human_major_id !=null">
+                or human_major_id = #{human_major_id}
+            </if>
+            <if test="min != ''">
+                AND regist_time >= #{min}
+            </if>
+            <if test="max != ''">
+                <![CDATA[and regist_time <= #{max}]]>
+            </if>
+
+        </where>
+        AND pass_check_status = 1;
+    </select>
+
+
+</mapper>

@@ -33,5 +33,7 @@
         <mapper resource="mappers/Major.xml"></mapper>
         <mapper resource="mappers/Human_File.xml"></mapper>
         <mapper resource="mappers/Engage_major_release.xml"></mapper>
+        <mapper resource="mappers/Engage_resume.xml"></mapper>
+        <mapper class="com.ck.dao.IEngage_interviewDao"/>
     </mappers>
 </configuration>

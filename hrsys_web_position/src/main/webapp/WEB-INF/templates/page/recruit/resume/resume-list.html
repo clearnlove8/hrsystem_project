@@ -1,29 +1,30 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-trasitional.dtd">
-<html>
+﻿<!DOCTYPE html>
+<!--suppress ALL-->
+<html xmlns:th="http://www.thymeleaf.org">
   <head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>My JSP 'resume-list.jsp' starting page</title>
 	 <link rel="stylesheet"
-			href="../../../css/table.css" type="text/css">
+			href="css/table.css" type="text/css">
 		<link rel="stylesheet"
-			href="../../../css/cwcalendar.css" type="text/css">
+			href="css/cwcalendar.css" type="text/css">
 		<script type="text/javascript"
-			src="../../../javascript/comm/comm.js">
+			src="javascript/comm/comm.js">
 		</script>
 		<script type="text/javascript"
-			src="../../../javascript/comm/list.js">
+			src="javascript/comm/list.js">
 		</script>
 		<script type="text/javascript"
-			src="../../../javascript/calendar-ch.js">
+			src="javascript/calendar-ch.js">
 		</script>
 		<script type="text/javascript"
-			src="../../../javascript/jquery-1.7.2.js">
+			src="javascript/jquery-1.7.2.js">
 		</script>
 		<script type="text/javascript"
-			src="../../../javascript/locate.js">
+			src="javascript/locate.js">
 		</script>
 		<script type="text/javascript"
-			src="../../../javascript/select.js">
+			src="javascript/select.js">
 		</script>
 	  </head>
 	<body>
@@ -71,36 +72,36 @@
 						复核 
 					</td>
 				</tr>
-				
-				
-				
-				
-					<tr>
-						<td class="TD_STYLE2">
-							541
-						</td>
-						<td class="TD_STYLE2">
-							w
-						</td>
-						<td class="TD_STYLE2">
-							&#30007;
-						</td>
-						<td class="TD_STYLE2">
+
+
+
+
+				<tr th:each="e:${engage_resumes}">
+					<td class="TD_STYLE2" th:text="${e.res_id}">
+						541
+					</td>
+					<td class="TD_STYLE2" th:text="${e.human_name}">
+						w
+					</td>
+					<td class="TD_STYLE2" th:text="${e.human_sex}">
+						&#30007;
+					</td>
+					<td class="TD_STYLE2" th:text="${e.human_major_kind_name}">
 						&#38144;&#21806;
-						</td>
-						<td class="TD_STYLE2">
+					</td>
+					<td class="TD_STYLE2" th:text="${e.human_major_name}">
 						&#24635;&#32463;&#29702;
-						</td>
-						<td class="TD_STYLE2">
+					</td>
+					<td class="TD_STYLE2" th:text="${e.human_telephone}">
 						123123213
-						</td>
-						<td class="TD_STYLE2">
-							 待复核
-						</td>
-						<td class="TD_STYLE2">
-							<a href="/HR_Fist/recruit/recruitAction!findValidResumeById?a=details&id=541">复核</a>
-						</td>
-					</tr>
+					</td>
+					<td class="TD_STYLE2" th:if="${e.pass_check_status == 0}">
+						待复核
+					</td>
+					<td class="TD_STYLE2">
+						<a th:href="@{queryByRes_id(res_id=${e.res_id})}">复核</a>
+					</td>
+				</tr>
 				
 				
 			</table>

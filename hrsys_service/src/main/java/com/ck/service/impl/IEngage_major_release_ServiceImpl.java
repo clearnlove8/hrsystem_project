@@ -3,6 +3,8 @@ package com.ck.service.impl;
 import com.ck.dao.IEngage_major_release_Dao;
 import com.ck.entity.Engage_major_release;
 import com.ck.service.IEngage_major_release_Service;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,9 +29,14 @@ public class IEngage_major_release_ServiceImpl implements IEngage_major_release_
 
     //查询职业发布信息
     @Override
-    public List<Engage_major_release> QueryEngage_major_release() {
-        return iEngage_major_release_dao.QueryEngage_major_release();
+    public Page<Object> QueryEngage_major_release(int currentPage, int PageSize) {
+        Page<Object> page = PageHelper.startPage(currentPage, PageSize);
+        iEngage_major_release_dao.QueryEngage_major_release();
+         return page;
+
     }
+
+
 
     //修改职业发布信息
     @Override
